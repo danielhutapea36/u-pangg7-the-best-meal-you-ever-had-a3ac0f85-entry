@@ -49,6 +49,8 @@ def build_sentence() -> str:
         raise ValueError("sentence must not start or end with white space")
     if any(ch in "\n\r" for ch in sentence):
         raise ValueError("sentence must be a single line")
+    if "  " in sentence:
+        raise ValueError("sentence must not contain two spaces in a row")
     if sentence.count(".") != 1 or not sentence.endswith("."):
         raise ValueError("sentence must be exactly one sentence")
     return sentence
